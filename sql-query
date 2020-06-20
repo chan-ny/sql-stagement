@@ -1,0 +1,90 @@
+
+
+create table Facatty 
+(Fac_ID char(8) not null primary key ,
+Fac_name varchar(20) not null,
+Depart_ID char (8) not null ,
+constraint Department_FK foreign key (Depart_ID)
+references Department(Depart_ID)
+);
+
+create table Department
+(Depart_ID char(8) not null primary key,
+Depart_Name varchar(20),
+Tea_ID char(8) not null,
+ST_ID char(8) not null,
+Sub_ID char(8) not null,
+constraint teacher_fk foreign key (Tea_ID)
+references Teacher(Tea_ID),
+constraint student_fk foreign key (ST_ID)
+references Student(ST_ID),
+constraint Subject_fk foreign key (Sub_ID)
+references Subjects(Sub_ID),
+);
+
+create table Teacher
+(Tea_ID char(8) not null primary key,
+Tea_Name varchar(20),
+Tea_Address varchar(20),
+Tea_age int ,
+Tea_degree varchar(20),
+Tea_Tell  varchar(12),
+Tea_Email varchar(20)
+);
+
+create table Student 
+(ST_ID char(8) not null primary key,
+ST_Name varchar(20),
+ST_Age int ,
+ST_Tell float,
+ST_Email varchar(20)
+);
+
+
+create table Subjects
+(Sub_ID char(8) not null primary key,
+Sub_Name varchar(20),
+Sub_Greedit varchar(20),
+SC_ID char(8) not null,
+
+constraint score_fk foreign key(SC_ID)
+references Score(SC_ID)
+);
+
+create table Score
+(SC_ID char(8) not null primary key,
+Midiem varchar(30),
+Final varchar(30),
+Grade char(1)
+);
+
+
+use learn_sql
+
+insert into Score values('SC001','39','40','B')
+insert into Score values('SC002','50','30','A')
+insert into Score values('SC003','39','30','A')
+insert into Score values('SC004','39','50','B')
+insert into Subjects values ('SUB001','SQL','3','SC001')
+insert into Subjects values ('SUB002','C','3','SC002')
+insert into Subjects values ('SUB003','java','3','SC003')
+insert into Subjects values ('SUB004','C#','3','SC004')
+
+insert into Student values('ST001','Chan',20,205588997,'Chan@gmail.com')
+insert into Student values('ST002','Chany',20,205588997,'Chany@gmail.com')
+insert into Student values('ST003','NY',20,205588997,'NY@gmail.com')
+
+insert into Teacher values('TEA001','Ana','Sarylom',45,'MasTer',209988555,'ANA@gmail.com')
+insert into Teacher values('TEA002','John','Sarylom',50,'MasTer',209788555,'John@gmail.com')
+
+insert into Department values ('DEM001','Computer','TEA001','ST002','SUB001')
+insert into Department values ('DEM002','Pysic','TEA002','ST003','SUB003')
+
+insert into Facatty values('F001','FOE','DEM001')
+
+select * from Facatty
+select * from Student
+select * from Department
+select * from Subjects
+select * from Score
+select * from Teacher
