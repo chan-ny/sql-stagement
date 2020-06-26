@@ -1,4 +1,5 @@
 create database learn_sql
+use learn_sql
 
 create table Facatty 
 (Fac_ID char(8) not null primary key ,
@@ -59,7 +60,7 @@ Grade char(1)
 );
 
 
-use learn_sql
+
 
 insert into Score values('SC001','39','40','B')
 insert into Score values('SC002','50','30','A')
